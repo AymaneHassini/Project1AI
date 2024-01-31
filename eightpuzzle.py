@@ -38,13 +38,21 @@ class EightPuzzleState:
         The configuration of the puzzle is stored in a 2-dimensional
         list (a list of lists) 'cells'.
         """
+       #initialize an empty list to represent the puzzle game
         self.cells = []
+        
         numbers = numbers[:] # Make a copy so as not to cause side-effects.
+        #reverse the 'number' list: to facilitate popping elements from the end of the list later
         numbers.reverse()
+        #iterate through the rows of the puzzle
         for row in range( 3 ):
+                 # Append an empty list for each row
             self.cells.append( [] )
+                # Iterate through the columns of the puzzle (3 columns)
             for col in range( 3 ):
+                # Pop a number from the reversed 'numbers' list and append it to the current row
                 self.cells[row].append( numbers.pop() )
+                 # If the popped number is 0, set the blankLocation attribute to the current row and column
                 if self.cells[row][col] == 0:
                     self.blankLocation = row, col
 
