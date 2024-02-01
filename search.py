@@ -175,22 +175,7 @@ def nullHeuristic(state, problem=None):
     goal in the provided SearchProblem.  This heuristic is trivial.
     """
     return 0
-def h1(state, problem=None):
-    """
-    This heuristic caclulate misplaced tiles
-    """
-    #a is the number of misplaced tiles
-    a=0
-    #actual_arr is the current state of the board
-    actual_arr = (state.cells[:])
-    #goal_arr is the goal state of the board
-    goal_arr =[[0, 1, 2], [3, 4, 5], [6, 7, 8]]
-    #we compare the current state with the goal state and increment a if the tiles are misplaced
-    for i in range(3):
-        for j in range(3):
-            if(goal_arr[i][j] != actual_arr[i][j] and state.cells[i][j]!=0):
-                a+=1 
-    return a
+
 def aStarSearch(problem, heuristic=nullHeuristic):
     """Search the node that has the lowest combined cost and heuristic first."""
 

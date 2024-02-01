@@ -179,6 +179,109 @@ class EightPuzzleState:
 
     def __str__(self):
         return self.__getAsciiString()
+    '''
+    heuristic function logic
+    '''
+    #1st heuristic: no. of misplaced
+    def misplacedTiles(self):
+        """
+        Returns the number of misplaced tiles compared to the goal state.
+        """
+        misplaced_count = 0
+        current = 0
+
+        for row in range(3):
+            for col in range(3):
+                if current != self.cells[row][col]:
+                    misplaced_count += 1
+                current += 1
+
+        return misplaced_count
+    #2nd heuristic: sum of eucleadian distances
+    def sum_of_euclidean_distances(self):
+        euclidean_sum = 0
+        # Define the goal state as a 2D array
+        goal_state = [
+            [0, 1, 2],
+            [3, 4, 5],
+            [6, 7, 8]
+        ]
+        for row in range(3):
+            for col in range(3):
+                value = self.cells[row][col]
+                if value != 0:
+                   # Find the goal position (row, column) for the current value
+                    for goal_i in range(3):
+                     if value in goal_state[goal_i]:
+                        goal_j = goal_state[goal_i].index(value)
+                        break
+                    
+                    euclidean_sum += ((row - goal_i) ** 2 + (col - goal_j) ** 2) ** 0.5
+                
+        return euclidean_sum
+    #3rd heuristic: sum of manhattan distances: final version of our manhattan distance heuristic
+    def sum_of_manhattan_distances(self):
+        # Initialize the distance sum to 0
+        distance_sum = 0
+
+        # Define the goal state as a 2D array
+        if self.isGoal():
+         return distance_sum  # If the current state is the goal state, the distance is 0
+         # Iterate over each cell in the puzzle
+        for i in range(3):
+         for j in range(3):
+            # Get the value of the current cell
+            value = self.cells[i][j]
+
+            if value != 0:
+                # Find the goal position (row, column) for the current value using isGoal method
+                goal_i, goal_j = divmod(value-1, 3)
+
+                # Calculate Manhattan distance and add to the total sum
+                distance_sum += abs(goal_i - i) + abs(goal_j - j)
+             # Return the final sum of Manhattan distances
+         return distance_sum
+    
+    #4th heuristic: number of tiles out of row + ... out of column
+    def tiles_out_of_row_and_column(self):  
+        """
+        Returns the total number of tiles that are out of their correct row plus
+        the total number of tiles that are out of their correct column compared to the goal state.
+        """
+        misplaced_out_of_row = 0
+        misplaced_out_of_column = 0
+
+        # Define the goal state as a 2D array
+        goal_state = [
+            [0, 1, 2],
+            [3, 4, 5],
+            [6, 7, 8]
+        ]
+
+        # Iterate over each cell in the puzzle
+        for i in range(3):
+            for j in range(3):
+                # Get the value of the current cell
+                value = self.cells[i][j]
+
+                # Check if the cell is not empty (represented by 0)
+                if value != 0:
+                    # Find the goal position (row, column) for the current value
+                    for goal_i in range(3):
+                        if value in goal_state[goal_i]:
+                            goal_j = goal_state[goal_i].index(value)
+                            break
+
+                    # Check if the current cell is out of its correct row
+                    if goal_i != i:
+                        misplaced_out_of_row += 1
+
+                    # Check if the current cell is out of its correct column
+                    if goal_j != j:
+                        misplaced_out_of_column += 1
+        print(misplaced_out_of_row, misplaced_out_of_column)
+        # Return the total number of tiles out of row and column
+        return misplaced_out_of_row + misplaced_out_of_column
 
 # TODO: Implement The methods in this class
 
@@ -217,7 +320,30 @@ class EightPuzzleSearchProblem(search.SearchProblem):
         be composed of legal moves
         """
         return len(actions)
-
+  # function that pushes the heuristic 1 value to the state
+    def heuristic1(self, state, problem=None):
+        """
+        Returns the heuristic value for a given state using the misplaced tiles heuristic.
+        """
+        return state.misplacedTiles()
+    # function that pushes the heuristic 2 value to the state
+    def heuristic3(self, state, problem=None):
+        """
+        Returns the heuristic value for a given state using the sum of Manhattan distances heuristic.
+        """
+        return state.sum_of_manhattan_distances()
+    # function that pushes the heuristic 3 value to the state
+    def heuristic2(self, state, problem=None):
+        """
+        Returns the heuristic value for a given state using the sum of euclidean distances heuristic.
+        """
+        return state.sum_of_euclidean_distances()
+    # function that pushes the heuristic 4 value to the state
+    def heuristic4(self, state, problem=None):
+        """
+        Returns the heuristic value for a given state using the no. of tiles out of row/column heuristic.
+        """
+        return state.tiles_out_of_row_and_column()
 EIGHT_PUZZLE_DATA = [[1, 0, 2, 3, 4, 5, 6, 7, 8],
                      [1, 7, 8, 2, 3, 4, 5, 6, 0],
                      [4, 3, 2, 7, 0, 5, 1, 6, 8],
@@ -264,8 +390,45 @@ if __name__ == '__main__':
     print('A random puzzle:')
     print(puzzle)
 
+    '''
+    # printing the no. of misplaced tiles
+
+    misplaced_tiles = puzzle.misplacedTiles()
+    print(f"Number of misplaced tiles: {misplaced_tiles}")
+    '''
+    
+    # printing sum of manhattan distances
+
+    manhattan_distance = puzzle.sum_of_manhattan_distances()
+    print(f"Sum of Manhattan distances: {manhattan_distance}")
+
+    '''
+    # printing sum of euclidean distances
+    euclidean_distance_sum = puzzle.sum_of_euclidean_distances()
+    print(f"Total Euclidean Distance: {euclidean_distance_sum}")
+    '''
+    # create the puzzle
     problem = EightPuzzleSearchProblem(puzzle)
-    path= search.aStarSearch(problem)    
+    
+    '''
+    # initializing the heuristic 1 function 
+    heuristic_function = problem.heuristic1
+
+    '''
+    '''
+    # initializing the heuristic 2 function 
+    heuristic_function2 = problem.heuristic2
+    '''
+    
+    # initializing the heuristic 3 function 
+    heuristic_function2= problem.heuristic2
+    
+     # initializing the heuristic 4 function 
+    #heuristic_function4 = problem.heuristic4
+
+
+    path= search.aStarSearch(problem, heuristic_function2)
+
     """
     path = search.breadthFirstSearch(problem)
     """   
