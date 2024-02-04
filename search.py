@@ -182,26 +182,40 @@ def aStarSearch(problem, heuristic=nullHeuristic):
     #to be explored (FIFO): takes in item, cost+heuristic
     frontier = util.PriorityQueue()
 
-    exploredNodes = [] #holds (state, cost)
+    exploredNodes = set()  # holds state
 
     startState = problem.getStartState()
     startNode = (startState, [], 0) #(state, action, cost)
 
     frontier.push(startNode, 0)
+    
+    # initializing counter for expended nodes
+    expanded_node = 0
+    
+    # initializing fringe size
+    fringe_size = 0
 
     while not frontier.isEmpty():
+        
+        frontier_size = len(list(frontier.heap))
+        
+        if frontier_size > fringe_size:
+            fringe_size = frontier_size 
 
         #begin exploring first (lowest-combined (cost+heuristic) ) node on frontier
         currentState, actions, currentCost = frontier.pop()
 
-        #put popped node into explored list
-        currentNode = (currentState, currentCost)
-        exploredNodes.append((currentState, currentCost))
+        #put popped node into explored set
+        exploredNodes.add(currentState)
 
         if problem.isGoalState(currentState):
-            return actions
+            return actions, expanded_node, fringe_size, len(actions)
 
         else:
+            #increment the expanded nodes counter
+            expanded_node += 1
+            
+            
             #list of (successor, action, stepCost)
             successors = problem.getSuccessors(currentState)
 
@@ -212,20 +226,15 @@ def aStarSearch(problem, heuristic=nullHeuristic):
                 newNode = (succState, newAction, newCost)
 
                 #check if this successor has been explored
-                already_explored = False
-                for explored in exploredNodes:
-                    #examine each explored node tuple
-                    exploredState, exploredCost = explored
+                already_explored = succState in exploredNodes
 
-                    if (succState == exploredState) and (newCost >= exploredCost):
-                        already_explored = True
-
-                #if this successor not explored, put on frontier and explored list
+                #if this successor not explored, put on frontier and explored set
                 if not already_explored:
                     frontier.push(newNode, newCost + heuristic(succState, problem))
-                    exploredNodes.append((succState, newCost))
+                    exploredNodes.add(succState)
 
-    return actions
+    return actions, expanded_node, fringe_size, len(actions)
+
 
 
 # Abbreviations
