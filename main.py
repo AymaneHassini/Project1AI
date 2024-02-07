@@ -12,7 +12,6 @@ if __name__ == '__main__':
     problem = EightPuzzleSearchProblem(puzzle)
     '''
     # printing the no. of misplaced tiles
-
     misplaced_tiles = puzzle.misplacedTiles()
     print(f"Number of misplaced tiles: {misplaced_tiles}")
     
@@ -28,7 +27,7 @@ if __name__ == '__main__':
     print(f"Total Euclidean Distance: {euclidean_distance_sum}")
     '''
     #printing no. of misplaced row/column
-    misplaced_row_col = puzzle.tiles_out_of_row_and_column()
+    #misplaced_row_col = puzzle.tiles_out_of_row_and_column()
     print(f"Tiles out of row and column: {misplaced_row_col}")
     '''
     # initializing the heuristic 1 function 
@@ -45,14 +44,19 @@ if __name__ == '__main__':
     '''
      
      # initializing the heuristic 4 function 
-    heuristic_function4 = problem.heuristic4
+    #heuristic_function4 = problem.heuristic4
 
-    path = search.aStarSearch(problem, heuristic_function4)[0]
+    #path = search.aStarSearch(problem, heuristic_function4)[0]
 
     """
     path = search.breadthFirstSearch(problem)
     """   
-    print('A* found a path of %d moves: %s' % (len(path), str(path)))
+    #print('A* found a path of %d moves: %s' % (len(path), str(path)))
+    path,expanded_nodes,fringe_size,depth=search.ucs(problem)
+    print('BFS found a path of %d moves: %s' % (len(path), str(path)))
+    print('Expanded Nodes:', expanded_nodes)
+    print('Max Fringe Size:', fringe_size)
+    print('Depth of Tree:', depth)
     curr = puzzle
     i = 1
     for a in path:

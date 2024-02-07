@@ -7,7 +7,7 @@ Pacman agents (in searchAgents.py).
 """
 
 import util
-
+import numpy as np
 class SearchProblem:
     """
     This class outlines the structure of a search problem, but doesn't implement
@@ -58,7 +58,73 @@ def tinyMazeSearch(problem):
     s = Directions.SOUTH
     w = Directions.WEST
     return  [s, s, w, s, w, w, s, w]
+# def depthFirstSearch(problem):
+#     """Search the deepest nodes in the search tree first."""
 
+#     #states to be explored (LIFO). holds nodes in form (state, action)
+#     frontier = util.Stack()
+#     #previously explored states (for path checking), holds states
+#     exploredNodes = np.zeros(shape=(1, 9), dtype=np.uint8)
+#     #exploredNodes = set()
+#     #define start node
+#     startState = problem.getStartState()
+#     startNode = (startState, [])
+    
+#     frontier.push(startNode)
+
+#     # initializing counter for expended nodes
+#     expanded_node = 0
+#     # initializing fringe size
+#     fringe_size = 0
+
+#     index = 0
+    
+#     while not frontier.isEmpty():
+        
+#         frontier_size = len(frontier.list)
+        
+#         if frontier_size > fringe_size:
+#             fringe_size = frontier_size        
+
+        
+#         #begin exploring last (most-recently-pushed) node on frontier
+#         currentState, actions = frontier.pop()
+#         #currentStatetoNumpy(currentState)
+#         currentState_array = currentStatetoNumpy(currentState)
+        
+#         # if currentState not in exploredNodes:
+#         if not np.any(np.all(exploredNodes == currentState_array, axis=1)):
+#             #mark current node as explored
+#             #exploredNodes.add(currentState)
+#             if exploredNodes.shape[0] == 1:
+#                 exploredNodes[0] = currentState_array
+#                 index += 1
+#             else:
+#                 exploredNodes = np.resize(exploredNodes, (exploredNodes.shape[0] + 1, 9))
+#                 exploredNodes[index] = currentState_array
+#                 index += 1
+
+#             if problem.isGoalState(currentState):
+#                 return actions, expanded_node, frontier_size, len(actions)
+#             else:
+#                 #increment the expanded nodes counter
+#                 expanded_node+=1
+
+#                 #get list of possible successor nodes in 
+#                 #form (successor, action, stepCost)
+#                 successors = problem.getSuccessors(currentState)
+                
+#                 #push each successor to frontier
+#                 for succState, succAction, succCost in successors:
+#                     newAction = actions + [succAction]
+#                     newNode = (succState, newAction)
+#                     frontier.push(newNode)
+            
+#                 frontier_size = len(frontier.list)
+
+#         del currentState
+
+#     return actions, expanded_node, frontier_size, len(actions) 
 def depthFirstSearch(problem):
     """Search the deepest nodes in the search tree first."""
 
@@ -71,18 +137,34 @@ def depthFirstSearch(problem):
     startNode = (startState, [])
     
     frontier.push(startNode)
+
+    # initializing counter for expended nodes
+    expanded_node = 0
+
+    # initializing fringe size
+    fringe_size = 0
     
     while not frontier.isEmpty():
+
+        frontier_size = len(frontier.list)
+        
+        if frontier_size > fringe_size:
+            fringe_size = frontier_size 
+
         #begin exploring last (most-recently-pushed) node on frontier
         currentState, actions = frontier.pop()
-        
+
         if currentState not in exploredNodes:
+
             #mark current node as explored
             exploredNodes.append(currentState)
-
+         
             if problem.isGoalState(currentState):
-                return actions
+                return actions, expanded_node, fringe_size, len(actions)
             else:
+
+                #    increment the expanded nodes counter
+                expanded_node += 1  
                 #get list of possible successor nodes in 
                 #form (successor, action, stepCost)
                 successors = problem.getSuccessors(currentState)
@@ -93,7 +175,10 @@ def depthFirstSearch(problem):
                     newNode = (succState, newAction)
                     frontier.push(newNode)
 
-    return actions  
+                frontier_size = len(frontier.list)
+        
+        
+    return actions, expanded_node, fringe_size, len(actions)
 
 def breadthFirstSearch(problem):
     """Search the shallowest nodes in the search tree first."""
@@ -102,24 +187,33 @@ def breadthFirstSearch(problem):
     frontier = util.Queue()
     
     #previously expanded states (for cycle checking), holds states
-    exploredNodes = []
+    exploredNodes = set()
     
     startState = problem.getStartState()
     startNode = (startState, [], 0) #(state, action, cost)
     
     frontier.push(startNode)
-    
+     # initializing counter for expended nodes
+    expanded_node = 0
+    # initializing fringe size
+    fringe_size = 0
     while not frontier.isEmpty():
+        frontier_size = len(frontier.list)
+        
+        if frontier_size > fringe_size:
+            fringe_size = frontier_size 
         #begin exploring first (earliest-pushed) node on frontier
         currentState, actions, currentCost = frontier.pop()
         
         if currentState not in exploredNodes:
             #put popped node state into explored list
-            exploredNodes.append(currentState)
+            exploredNodes.add(currentState)
 
             if problem.isGoalState(currentState):
-                return actions
+                return actions,expanded_node, fringe_size, len(actions)
             else:
+                #increment the expanded nodes counter
+                expanded_node += 1
                 #list of (successor, action, stepCost)
                 successors = problem.getSuccessors(currentState)
                 
@@ -130,7 +224,7 @@ def breadthFirstSearch(problem):
 
                     frontier.push(newNode)
 
-    return actions
+    return actions, expanded_node, fringe_size, len(actions)
         
 def uniformCostSearch(problem):
     """Search the node of least total cost first."""
@@ -145,18 +239,28 @@ def uniformCostSearch(problem):
     startNode = (startState, [], 0) #(state, action, cost)
     
     frontier.push(startNode, 0)
-    
+    # initializing counter for expended nodes
+    expanded_node = 0
+    # initializing fringe size
+    fringe_size = 0
     while not frontier.isEmpty():
+        frontier_size = len(list(frontier.heap))
+        
+        if frontier_size > fringe_size:
+            fringe_size = frontier_size 
         #begin exploring first (lowest-cost) node on frontier
         currentState, actions, currentCost = frontier.pop()
-       
+        
         if (currentState not in exploredNodes) or (currentCost < exploredNodes[currentState]):
             #put popped node's state into explored list
             exploredNodes[currentState] = currentCost
 
             if problem.isGoalState(currentState):
-                return actions
+                return actions,expanded_node, fringe_size, len(actions)
             else:
+                #increment the expanded nodes counter
+                expanded_node += 1
+                
                 #list of (successor, action, stepCost)
                 successors = problem.getSuccessors(currentState)
                 
@@ -167,7 +271,7 @@ def uniformCostSearch(problem):
 
                     frontier.update(newNode, newCost)
 
-    return actions
+    return actions, expanded_node, fringe_size, len(actions)
 
 def nullHeuristic(state, problem=None):
     """
@@ -234,7 +338,22 @@ def aStarSearch(problem, heuristic=nullHeuristic):
                     exploredNodes.add(succState)
 
     return actions, expanded_node, fringe_size, len(actions)
+def currentStatetoNumpy(currentState):
+        array = np.empty(9, dtype=np.uint8)
+        
+        index = 0
+        for line in str(currentState).split("\n")[1:-1:2]:
 
+            for number in line.split("|")[1:-1]:
+                
+                if number.isspace():
+                    array[index] = 0
+                else:
+                    array[index] = int(number)
+                index += 1
+
+
+        return array
 
 
 # Abbreviations
