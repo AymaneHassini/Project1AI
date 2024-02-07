@@ -1,0 +1,101 @@
+,path,expanded_node,fringe_size,depth
+0,"['Up', 'Left', 'Down', 'Right', 'Down', 'Left', 'Left', 'Up', 'Up']",326,209,10
+1,"['Right', 'Right', 'Down', 'Left', 'Up', 'Right', 'Up', 'Left', 'Left']",484,276,10
+2,"['Down', 'Right', 'Up', 'Up', 'Left']",41,29,6
+3,"['Up', 'Right', 'Up', 'Left', 'Left']",42,37,6
+4,"['Left', 'Up', 'Right', 'Down', 'Right', 'Up', 'Up', 'Left', 'Left']",423,262,10
+5,"['Down', 'Right', 'Up', 'Right', 'Up', 'Left', 'Left']",130,98,8
+6,"['Left', 'Up', 'Up']",15,9,4
+7,"['Down', 'Left', 'Down', 'Right', 'Up', 'Right', 'Up', 'Left', 'Left']",348,230,10
+8,"['Right', 'Up', 'Left']",13,13,4
+9,"['Right', 'Up', 'Left', 'Up', 'Left']",55,42,6
+10,"['Left', 'Down', 'Left', 'Up', 'Right', 'Up', 'Left']",157,105,8
+11,"['Right', 'Right', 'Down', 'Left', 'Left', 'Up', 'Up']",181,105,8
+12,['Left'],2,4,2
+13,"['Right', 'Down', 'Left', 'Left', 'Up']",59,41,6
+14,"['Right', 'Up', 'Left', 'Left', 'Up']",59,41,6
+15,"['Left', 'Up', 'Left', 'Down', 'Right', 'Up', 'Left']",143,103,8
+16,"['Up', 'Left', 'Left']",10,11,4
+17,"['Down', 'Right', 'Right', 'Up', 'Up', 'Left', 'Down', 'Right', 'Up', 'Left', 'Left']",1006,622,12
+18,['Left'],2,4,2
+19,['Up'],1,2,1
+20,"['Down', 'Right', 'Up', 'Up', 'Left']",41,29,6
+21,"['Right', 'Down', 'Left', 'Up', 'Up']",53,34,6
+22,"['Right', 'Up', 'Left']",13,13,4
+23,"['Right', 'Right', 'Down', 'Left', 'Left', 'Up', 'Up']",181,105,8
+24,"['Left', 'Up', 'Up']",15,9,4
+25,['Left'],2,4,2
+26,"['Left', 'Up', 'Up']",15,9,4
+27,"['Left', 'Left', 'Down', 'Right', 'Right', 'Up', 'Up', 'Left', 'Left']",486,278,10
+28,"['Down', 'Left', 'Up', 'Left', 'Up']",43,29,6
+29,"['Right', 'Right', 'Up', 'Left', 'Left']",58,39,6
+30,"['Up', 'Right', 'Right', 'Down', 'Left', 'Left', 'Up']",120,90,8
+31,"['Right', 'Up', 'Up', 'Left', 'Left']",54,42,6
+32,"['Right', 'Down', 'Down', 'Left', 'Up', 'Left', 'Up']",167,98,8
+33,"['Right', 'Down', 'Left', 'Up', 'Left']",55,42,6
+34,"['Right', 'Up', 'Left']",13,13,4
+35,"['Left', 'Left', 'Down', 'Right', 'Right', 'Up', 'Left', 'Left', 'Up']",491,277,10
+36,"['Right', 'Up', 'Up', 'Left', 'Down', 'Right', 'Up', 'Left', 'Left']",450,270,10
+37,"['Right', 'Up', 'Left']",13,13,4
+38,"['Down', 'Left', 'Up', 'Right', 'Up', 'Left', 'Left']",131,100,8
+39,"['Left', 'Down', 'Right', 'Right', 'Up', 'Left', 'Down', 'Left', 'Up']",432,260,10
+40,"['Left', 'Down', 'Right', 'Down', 'Right', 'Up', 'Left', 'Up', 'Left']",426,262,10
+41,"['Right', 'Down', 'Left', 'Up', 'Left']",55,42,6
+42,"['Left', 'Down', 'Right', 'Up', 'Left', 'Left', 'Up']",167,105,8
+43,"['Left', 'Down', 'Down', 'Right', 'Right', 'Up', 'Left', 'Up', 'Left']",404,259,10
+44,"['Up', 'Right', 'Up', 'Left', 'Left']",42,37,6
+45,['Left'],2,4,2
+46,"['Down', 'Right', 'Up', 'Left', 'Down', 'Down', 'Left', 'Up', 'Up']",359,233,10
+47,['Left'],2,4,2
+48,['Up'],1,2,1
+49,"['Up', 'Right', 'Down', 'Left', 'Up']",35,27,6
+50,"['Up', 'Up', 'Right', 'Down', 'Left', 'Left', 'Up']",117,81,8
+51,"['Right', 'Up', 'Up', 'Left', 'Left']",54,42,6
+52,"['Up', 'Right', 'Right', 'Down', 'Down', 'Left', 'Up', 'Up', 'Left']",328,211,10
+53,"['Up', 'Left', 'Up']",11,9,4
+54,"['Up', 'Up', 'Left']",9,9,3
+55,"['Down', 'Right', 'Up', 'Up', 'Left']",41,29,6
+56,"['Left', 'Up', 'Right', 'Up', 'Left']",47,41,6
+57,['Left'],2,4,2
+58,"['Left', 'Up', 'Left']",13,13,4
+59,"['Up', 'Right', 'Down', 'Right', 'Down', 'Left', 'Up', 'Left', 'Up']",323,209,10
+60,"['Up', 'Left', 'Down', 'Left', 'Up']",35,27,6
+61,"['Up', 'Right', 'Down', 'Down', 'Left', 'Up', 'Up']",103,79,7
+62,"['Right', 'Up', 'Left', 'Down', 'Left', 'Up', 'Up']",177,102,8
+63,"['Up', 'Up', 'Left', 'Down', 'Right', 'Up', 'Right', 'Down', 'Left', 'Up', 'Left']",792,536,12
+64,"['Up', 'Right', 'Down', 'Down', 'Left', 'Up', 'Right', 'Up', 'Left']",293,203,10
+65,"['Right', 'Down', 'Left', 'Left', 'Up']",59,41,6
+66,"['Left', 'Down', 'Right', 'Up', 'Up', 'Left', 'Left']",164,105,8
+67,"['Up', 'Left', 'Down', 'Right', 'Up', 'Left', 'Left']",111,87,8
+68,"['Left', 'Up', 'Right', 'Up', 'Left']",47,41,6
+69,"['Right', 'Down', 'Down', 'Left', 'Left', 'Up', 'Up']",171,98,8
+70,"['Left', 'Up', 'Up', 'Right', 'Down', 'Right', 'Down', 'Left', 'Left', 'Up', 'Up']",1080,637,12
+71,"['Down', 'Down', 'Right', 'Up', 'Left', 'Down', 'Left', 'Up', 'Up']",319,212,10
+72,"['Up', 'Left', 'Down', 'Left', 'Up']",35,27,6
+73,"['Right', 'Down', 'Left', 'Up', 'Right', 'Up', 'Left']",157,105,8
+74,"['Down', 'Right', 'Up', 'Right', 'Down', 'Left', 'Left', 'Up', 'Up']",381,228,10
+75,"['Down', 'Down', 'Right', 'Up', 'Up', 'Left', 'Left']",112,82,8
+76,"['Right', 'Up', 'Left']",13,13,4
+77,"['Down', 'Right', 'Right', 'Up', 'Up', 'Left', 'Left']",134,102,8
+78,"['Down', 'Left', 'Up']",11,9,4
+79,['Left'],2,4,2
+80,"['Up', 'Right', 'Down', 'Left', 'Up']",35,27,6
+81,"['Right', 'Up', 'Up', 'Left', 'Left']",54,42,6
+82,"['Left', 'Up', 'Left']",13,13,4
+83,"['Up', 'Up', 'Left']",9,9,3
+84,"['Up', 'Left', 'Left', 'Down', 'Down', 'Right', 'Right', 'Up', 'Up', 'Left', 'Left']",871,573,12
+85,"['Down', 'Left', 'Up']",11,9,4
+86,"['Left', 'Down', 'Right', 'Up', 'Left']",47,41,6
+87,"['Up', 'Up', 'Left']",9,9,3
+88,"['Left', 'Up', 'Up']",15,9,4
+89,"['Right', 'Down', 'Right', 'Up', 'Up', 'Left', 'Left']",162,107,8
+90,"['Left', 'Up', 'Right', 'Up', 'Left']",47,41,6
+91,"['Down', 'Right', 'Up', 'Left', 'Left']",42,37,6
+92,"['Up', 'Up', 'Left']",9,9,3
+93,"['Right', 'Right', 'Down', 'Left', 'Up', 'Up', 'Left']",176,106,8
+94,"['Left', 'Down', 'Left', 'Up', 'Up']",53,34,6
+95,"['Down', 'Down', 'Right', 'Up', 'Left', 'Up', 'Left']",113,82,8
+96,"['Right', 'Up', 'Left', 'Down', 'Left', 'Up', 'Up']",177,102,8
+97,"['Left', 'Up', 'Up']",15,9,4
+98,"['Down', 'Right', 'Down', 'Left', 'Up', 'Left', 'Up']",142,87,8
+99,['Left'],2,4,2
