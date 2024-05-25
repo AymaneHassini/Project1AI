@@ -31,6 +31,8 @@ To run the solver, execute the following command:
 ```bash
 python main.py
 ```
+This will run the 8-puzzle solver using A* search algorithm with different heuristics and compare their performance.
+
 Heuristics Implemented
 
 Number of Misplaced Tiles: Counts the number of tiles not in their goal position.
