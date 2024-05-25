@@ -10,7 +10,7 @@ This repository contains the implementation of an 8-puzzle game solver using var
 - [Heuristics Implemented](#heuristics-implemented)
 - [Results and Analysis](#results-and-analysis)
 - [Conclusion](#conclusion)
-- [Team](#team)
+
 
 ## Introduction
 
@@ -26,21 +26,21 @@ The 8-puzzle game is a classic problem in artificial intelligence where the obje
  ```bash
 pip install -r requirements.txt
 ```
-3- Usage
+## 3- Usage
 To run the solver, execute the following command:
 ```bash
 python main.py
 ```
 This will run the 8-puzzle solver using A* search algorithm with different heuristics and compare their performance.
 
-Heuristics Implemented
+## 4-Heuristics Implemented
 
 Number of Misplaced Tiles: Counts the number of tiles not in their goal position.
 Sum of Euclidean Distances: Calculates the Euclidean distance for each tile from its goal position.
 Sum of Manhattan Distances: Computes the sum of the horizontal and vertical distances each tile needs to move to reach its goal position.
 Number of Tiles Out of Row and Column: Counts the number of tiles that are not in their correct row or column.
 Results and Analysis
-
+## 5- Results and Analysis
 The performance of each heuristic is evaluated based on three metrics:
 
 Fringe Size: The number of nodes kept in memory during the search.
@@ -51,5 +51,5 @@ Manhattan Distance heuristic consistently resulted in the smallest fringe size, 
 Euclidean Distance and Manhattan Distance heuristics had similar performance in terms of the number of expanded nodes, both being more efficient than the other heuristics.
 All heuristics showed similar average tree depths, which is expected as they are all admissible heuristics used with A* search, leading to optimal solutions.
 Conclusion
-
+## 6-Conclusion 
 The Sum of Manhattan Distances heuristic was found to be the most effective for the 8-puzzle problem, providing a good balance between accuracy and resource efficiency. While all implemented heuristics are admissible and produce optimal solutions, Manhattan Distance offers the best performance in practical scenarios for this specific problem.
